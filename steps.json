@@ -88,7 +88,7 @@
         "next": 12
     }, {
         "id": 12,
-        "text": "Você fará um vôo %tipoDeViajem%|1.4|, sua rota será:",
+        "text": "Você fará um vôo %tipoDeViajem%|1.4|, sua rota será:%checkPoints%",
         "wait": 15,
         "required": false,
         "namespace": null,
