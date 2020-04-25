@@ -2,6 +2,9 @@
 
 Este projeto é um teste de como seria suportar suas formas de interação com o usuário, via CLI e via Web.
 
+## Necessário
+[![Supported PHP version](https://img.shields.io/badge/PHP->%3D%207.1-blue.svg)]()
+
 ## Instalação
 
 Este projeto não usa nenhum compoente de terceiros, somente pacotes necessários para os testes unitários e demais recursos de debug.
