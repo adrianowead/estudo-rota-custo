@@ -19,6 +19,8 @@ final class Cli extends Flow
         while ($step->next) {
             $this->watchParams();
 
+            $step = $this->getCurrentStep();
+
             $this->performText($step->text);
 
             if ($step->required) {
@@ -38,15 +40,28 @@ final class Cli extends Flow
         // monitorando quando os inputs chaves forem preenchidos
         if (isset($this->inputs['%pontoOrigem%']) && isset($this->inputs['%pontoDestino%'])) {
             $this->from = $this->inputs['%pontoOrigem%'];
-        }
-
-        if (isset($this->inputs['%pontoDestino%'])) {
             $this->to = $this->inputs['%pontoDestino%'];
-        }
 
-        $this->inputs['%checkPoints%'] = $this->routeAssemble();
-        $this->inputs['%tipoDeViajem%'] = $this->tripType();
-        $this->inputs['%valorTotal%'] = $this->performCalc();
+            $this->inputs['%checkPoints%'] = chr(13) . chr(10) . implode(" -> ", $this->routeAssemble());
+            $this->inputs['%tipoDeViajem%'] = $this->tripType();
+            $this->inputs['%valorTotal%'] = $this->getTotalValue();
+
+            $this->checkTripPossible();
+        }
+    }
+
+    private function checkTripPossible()
+    {
+        if (!$this->allMatch || sizeof($this->allMatch) == 0) {
+            $this->performText($this->config->routeNotFound);
+
+            $this->setSleep($this->config->timeWait * 1000000);
+
+            $this->setStep(7);
+
+            unset($this->inputs['%pontoOrigem%']);
+            unset($this->inputs['%pontoDestino%']);
+        }
     }
 
     private function persistAsk()
