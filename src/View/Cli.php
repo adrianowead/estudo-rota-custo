@@ -2,10 +2,13 @@
 
 namespace Wead\View;
 
+use Wead\Helper\CalcRoute;
 use Wead\Controller\Flow;
 
 final class Cli extends Flow
 {
+    use CalcRoute;
+
     private $timeWriteLetter = 20000;
     private $inputs = [];
 
@@ -14,6 +17,8 @@ final class Cli extends Flow
         $step = $this->getCurrentStep();
 
         while ($step->next) {
+            $this->watchParams();
+
             $this->performText($step->text);
 
             if ($step->required) {
@@ -26,6 +31,22 @@ final class Cli extends Flow
 
             $step = $this->getNextStep();
         }
+    }
+
+    private function watchParams()
+    {
+        // monitorando quando os inputs chaves forem preenchidos
+        if (isset($this->inputs['%pontoOrigem%']) && isset($this->inputs['%pontoDestino%'])) {
+            $this->from = $this->inputs['%pontoOrigem%'];
+        }
+
+        if (isset($this->inputs['%pontoDestino%'])) {
+            $this->to = $this->inputs['%pontoDestino%'];
+        }
+
+        $this->inputs['%checkPoints%'] = $this->routeAssemble();
+        $this->inputs['%tipoDeViajem%'] = $this->tripType();
+        $this->inputs['%valorTotal%'] = $this->performCalc();
     }
 
     private function persistAsk()
@@ -42,9 +63,9 @@ final class Cli extends Flow
     {
         if (PHP_OS == 'WINNT') {
             echo "> ";
-            $line = stream_get_line(STDIN, 1024, PHP_EOL);
+            $line = trim(stream_get_line(STDIN, 1024, PHP_EOL));
         } else {
-            $line = readline("> ");
+            $line = trim(readline("> "));
         }
 
         $line = trim($line);
@@ -77,7 +98,7 @@ final class Cli extends Flow
 
     private function replaceVars($string)
     {
-        if(sizeof($this->inputs) > 0){
+        if (sizeof($this->inputs) > 0) {
             $string = str_replace(
                 array_keys($this->inputs),
                 $this->inputs,
