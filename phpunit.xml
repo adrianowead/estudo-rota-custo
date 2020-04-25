@@ -1,0 +1,23 @@
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
+    colors="true">
+    <testsuites>
+        <testsuite name="Testes Unitários do Asa Quebrada Air Lines">
+            <directory>tests/</directory>
+        </testsuite>
+    </testsuites>
+    <logging>
+        <log type="coverage-clover" target="tests/_reports/logs/clover.xml"/>
+        <log type="coverage-html" target="tests/_reports/coverage"/>
+        <log type="testdox-text" target="tests/_reports/testdox/executed.txt"/>
+    </logging>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+    <php>
+        <const name="PHPUNIT_TEST_IS_RUNNING" value="true"/>
+    </php>
+</phpunit>
