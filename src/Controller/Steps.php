@@ -6,7 +6,7 @@ use Wead\Model\Steps as ModelSteps;
 
 final class Steps
 {
-    public $config;
+    private $config;
     public $steps;
 
     public function __construct()
@@ -23,6 +23,11 @@ final class Steps
         return $data->getAll();
     }
 
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
     /**
      * Retornar apenas propriedades públicas
      */
@@ -30,8 +35,8 @@ final class Steps
     {
         $r = new \ReflectionObject($this);
 
-        if ($r->hasConstant($key)) {
-            return $r->getConstant($key);
+        if ($r->hasProperty($key)) {
+            return $r->hasProperty($key);
         }
     }
 }

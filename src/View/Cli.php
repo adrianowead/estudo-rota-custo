@@ -26,7 +26,7 @@ final class Cli extends Flow
             }
 
             if ($step->wait && $step->wait > 0) {
-                usleep($step->wait * 1000000);
+                $this->setSleep($step->wait * 1000000);
             }
 
             $step = $this->getNextStep();
@@ -53,7 +53,8 @@ final class Cli extends Flow
     {
         $this->performText($this->config->defaultError);
 
-        usleep($this->config->timeWait * 1000000);
+        $this->setSleep($this->config->timeWait * 1000000);
+
         $this->performText($this->getCurrentStep()->text);
 
         return $this->catchInput();
@@ -63,9 +64,9 @@ final class Cli extends Flow
     {
         if (PHP_OS == 'WINNT') {
             echo "> ";
-            $line = trim(stream_get_line(STDIN, 1024, PHP_EOL));
+            $line = \PHPUNIT_TEST_IS_RUNNING ? 'test' : trim(stream_get_line(STDIN, 1024, PHP_EOL));
         } else {
-            $line = trim(readline("> "));
+            $line = \PHPUNIT_TEST_IS_RUNNING ? 'test' : trim(readline("> "));
         }
 
         $line = trim($line);
@@ -83,17 +84,13 @@ final class Cli extends Flow
 
         $parts = preg_split('/[\|]+/', $string);
 
-        echo chr(13) . chr(10);
-
         foreach ($parts as $v) {
             if (is_numeric($v)) {
-                sleep($v);
+                $this->setSleep($v * 1000000);
             } else {
                 $this->typeCli($v);
             }
         }
-
-        echo chr(13) . chr(10);
     }
 
     private function replaceVars($string)
@@ -113,7 +110,9 @@ final class Cli extends Flow
     {
         for ($y = 0; $y < strlen($text); $y++) {
             echo $text[$y];
-            usleep($this->timeWriteLetter);
+            $this->setSleep($this->timeWriteLetter);
         }
+
+        echo chr(13) . chr(10);
     }
 }

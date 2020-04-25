@@ -14,7 +14,7 @@ abstract class Flow
         $data = new Steps;
 
         $this->steps = $data->steps;
-        $this->config = $data->config;
+        $this->config = $data->getConfig();
     }
 
     public function getCurrentStep(): Step
@@ -24,12 +24,22 @@ abstract class Flow
 
     public function getNextStep(): Step
     {
-        return next($this->steps);
+        $last = clone $this;
+        $last = end($last->steps);
+
+        $step = $last === $this->getCurrentStep() ? $last : next($this->steps);
+
+        return $step;
     }
 
     public function getPreviusStep(): Step
     {
-        return prev($this->steps);
+        $first = clone $this;
+        $first = array_shift($first->steps);
+
+        $step = $first === $this->getCurrentStep() ? $first : prev($this->steps);
+
+        return $step;
     }
 
     public function setStep(int $step = 0): Step
@@ -39,6 +49,11 @@ abstract class Flow
         }
 
         return $this->getCurrentStep();
+    }
+
+    public function setSleep($time)
+    {
+        usleep(\PHPUNIT_TEST_IS_RUNNING ? 0 : $time);
     }
 
     abstract public function dispatchInput();
