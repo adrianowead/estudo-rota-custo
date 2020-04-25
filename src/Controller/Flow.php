@@ -44,6 +44,8 @@ abstract class Flow
 
     public function setStep(int $step = 0): Step
     {
+        reset($this->steps);
+
         while ($this->getCurrentStep()->id < $step) {
             $this->getNextStep();
         }
