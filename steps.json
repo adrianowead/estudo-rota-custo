@@ -1,17 +1,17 @@
 {
-    "timeWait": 15,
-    "defaultError": "Desculpe|2|, como comentei eu sou burro :(",
-    "defaultSuggestions": "Não entendi bem|2|, estas são algumas opções de resposta:",
+    "timeWait": 3,
+    "defaultError": "Desculpe|1.4|, como comentei eu sou burro :(",
+    "defaultSuggestions": "Não entendi bem|1.4|, estas são algumas opções de resposta:",
     "steps": [{
         "id": 0,
-        "text": "Olá, me chamo Adriano Maciel",
+        "text": "Olá|1.2|, me chamo Adriano Maciel",
         "wait": 2,
         "required": false,
         "namespace": null,
         "next": 1
     }, {
         "id": 1,
-        "text": "Antes de começar|1|, por favor|1|, preciso saber qual é o seu nome",
+        "text": "Antes de começar|1.2|, por favor|1.2|, preciso saber qual é o seu nome",
         "wait": 2,
         "required": true,
         "namespace": "%nomeUsuario%",
@@ -25,28 +25,28 @@
         "next": 3
     }, {
         "id": 3,
-        "text": "Agora que fomos devidamente apresentados|1|, vamos aos negócios!",
+        "text": "Agora que fomos devidamente apresentados|1.2|, vamos aos negócios!",
         "wait": 3,
         "required": false,
         "namespace": null,
         "next": 4
     }, {
         "id": 4,
-        "text": "Sei que você é uma pessoa que adora viajar|1|, todos os humanos adoram|3|, ou quase...",
+        "text": "Sei que você é uma pessoa que adora viajar|1.2|, todos os humanos adoram|1.7|, ou quase...",
         "wait": 5,
         "required": false,
         "namespace": null,
         "next": 5
     }, {
         "id": 5,
-        "text": "Mas me diga, de onde você vai partir?|2| Sou um sistema burro|2|, entáo preciso que você me diga a sigla do aeroporto...",
+        "text": "Mas me diga, de onde você vai partir?|1.4| Sou um sistema burro|1.4|, entáo preciso que você me diga a sigla do aeroporto...",
         "wait": 2,
         "required": false,
         "namespace": null,
         "next": 6
     }, {
         "id": 6,
-        "text": "Por exemplo|2|, se for para Guarulhos|2|, informe GRU",
+        "text": "Por exemplo|1.4|, se for para Guarulhos|1.4|, informe GRU",
         "wait": 4,
         "required": false,
         "namespace": null,
@@ -60,42 +60,42 @@
         "next": 8
     }, {
         "id": 8,
-        "text": "Uau!|3| Eu nunca estive neste lugar :(",
+        "text": "Uau!|1.7| Eu nunca estive neste lugar :(",
         "wait": 4,
         "required": false,
         "namespace": null,
         "next": 9
     }, {
         "id": 9,
-        "text": "E para onde você vai?|3| Algum lugar exótico?",
+        "text": "E para onde você vai?|1.7| Algum lugar exótico?",
         "wait": 3,
         "required": true,
         "namespace": "%pontoDestino%",
         "next": 10
     }, {
         "id": 10,
-        "text": "Nossa!|2| Quem me dera algum dia fazer esta viajem!",
+        "text": "Nossa!|1.4| Quem me dera algum dia fazer esta viajem!",
         "wait": 4,
         "required": false,
         "namespace": null,
         "next": 11
     }, {
         "id": 11,
-        "text": "Como sistemas burros não ganham dinheiro|2|, mas humanos inteligentes sim...",
+        "text": "Como sistemas burros não ganham dinheiro|1.4|, mas humanos inteligentes sim...",
         "wait": 2,
         "required": false,
         "namespace": null,
         "next": 12
     }, {
         "id": 12,
-        "text": "Você fará um vôo %tipoDeViajem%|2|, sua rota será:",
+        "text": "Você fará um vôo %tipoDeViajem%|1.4|, sua rota será:",
         "wait": 15,
         "required": false,
         "namespace": null,
         "next": 13
     }, {
         "id": 13,
-        "text": "E o custo total é:|2| %valorTotal%",
+        "text": "E o custo total é:|1.4| %valorTotal%",
         "wait": 10,
         "required": false,
         "namespace": null,
@@ -104,6 +104,13 @@
         "id": 14,
         "text": "Obrigado por viajar com a 'AsaQuebrada AirLines!'",
         "wait": 15,
+        "required": false,
+        "namespace": null,
+        "next": 15
+    }, {
+        "id": 15,
+        "text": "",
+        "wait": 0,
         "required": false,
         "namespace": null,
         "next": false

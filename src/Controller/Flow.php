@@ -7,10 +7,14 @@ use Wead\Controller\dto\Step;
 abstract class Flow
 {
     private $steps;
+    public $config;
 
     public function __construct()
     {
-        $this->steps = (new Steps)->steps;
+        $data = new Steps;
+
+        $this->steps = $data->steps;
+        $this->config = $data->config;
     }
 
     public function getCurrentStep(): Step

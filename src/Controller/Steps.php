@@ -6,7 +6,7 @@ use Wead\Model\Steps as ModelSteps;
 
 final class Steps
 {
-    private $config;
+    public $config;
     public $steps;
 
     public function __construct()
