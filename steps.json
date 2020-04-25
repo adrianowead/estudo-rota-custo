@@ -2,6 +2,7 @@
     "timeWait": 3,
     "defaultError": "Desculpe|1.4|, como comentei eu sou burro :(",
     "defaultSuggestions": "Não entendi bem|1.4|, estas são algumas opções de resposta:",
+    "routeNotFound": "Desculpe|0.9|, mas não contrei uma rota entre estes locais.|0.9| Vamos tentar novamente...",
     "steps": [{
         "id": 0,
         "text": "Olá|1.2|, me chamo Adriano Maciel",
@@ -89,21 +90,21 @@
     }, {
         "id": 12,
         "text": "Você fará um vôo %tipoDeViajem%|1.4|, sua rota será:%checkPoints%",
-        "wait": 15,
+        "wait": 5,
         "required": false,
         "namespace": null,
         "next": 13
     }, {
         "id": 13,
         "text": "E o custo total é:|1.4| %valorTotal%",
-        "wait": 10,
+        "wait": 4,
         "required": false,
         "namespace": null,
         "next": 14
     }, {
         "id": 14,
         "text": "Obrigado por viajar com a 'AsaQuebrada AirLines!'",
-        "wait": 15,
+        "wait": 5,
         "required": false,
         "namespace": null,
         "next": 15
