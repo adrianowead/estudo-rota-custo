@@ -8,7 +8,7 @@ Este projeto não usa nenhum compoente de terceiros, somente pacotes necessário
 
 ### Utilização via CLI
 
-Para ver a utilização via CLI, execute o __index.php__.
+Para ver a utilização via CLI, execute o [__index.php__](./index.php).
 
 ```
 $ php index.php
@@ -18,7 +18,7 @@ Feito isso iniciará a comunicação via CLI.
 
 ## Rotas novas
 
-Para carregar novas rotas, basta __editar__ o arquivo __exemplo.csv__, mantendo a mesma estrutura:
+Para carregar novas rotas, basta __editar__ o arquivo [__exemplo.csv__](./exemplo.csv), mantendo a mesma estrutura:
 
 | Origem  | Destino  | Valor  |
 |:-:|:-:|:-:|
@@ -28,4 +28,4 @@ Para carregar novas rotas, basta __editar__ o arquivo __exemplo.csv__, mantendo 
 
 ## Alteração de mensagens
 
-Para alterar as mensagens, basta modificar o arquivo __steps.json__.
+Para alterar as mensagens, basta modificar o arquivo [__steps.json__](./steps.json).
