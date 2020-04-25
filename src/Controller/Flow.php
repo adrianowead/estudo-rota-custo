@@ -11,7 +11,7 @@ abstract class Flow
 
     public function __construct()
     {
-        $data = new Steps;
+        $data = new Steps();
 
         $this->steps = $data->steps;
         $this->config = $data->getConfig();

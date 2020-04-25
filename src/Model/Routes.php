@@ -20,7 +20,7 @@ final class Routes
 
         $file = fopen($this->src, "r");
 
-        while (($row = fgetcsv($file, 1000, ",")) !== FALSE) {
+        while (($row = fgetcsv($file, 1000, ",")) !== false) {
             $data[] = new Route((object) $row);
         }
 

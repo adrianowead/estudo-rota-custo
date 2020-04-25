@@ -10,7 +10,7 @@ class StepsTest extends TestCase
 {
     public function testGetAll()
     {
-        $model = new Steps;
+        $model = new Steps();
 
         $this->assertInstanceOf(
             \stdClass::class,
@@ -20,7 +20,7 @@ class StepsTest extends TestCase
 
     public function testGetAllContainsSteps()
     {
-        $model = new Steps;
+        $model = new Steps();
 
         $this->assertContainsOnlyInstancesOf(
             Step::class,

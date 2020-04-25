@@ -9,7 +9,7 @@ final class Boostrap
     public function run($sapi): void
     {
         if ($sapi === 'cli') {
-            $f = new Cli;
+            $f = new Cli();
 
             if (!PHPUNIT_TEST_IS_RUNNING) {
                 $f->dispatchInput();

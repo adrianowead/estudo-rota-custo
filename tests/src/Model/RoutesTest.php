@@ -10,14 +10,14 @@ class RoutesTest extends TestCase
 {
     public function testGetAll()
     {
-        $model = new Routes;
+        $model = new Routes();
 
         $this->assertIsArray($model->getAll());
     }
 
     public function testGetAllContainsSteps()
     {
-        $model = new Routes;
+        $model = new Routes();
 
         $this->assertContainsOnlyInstancesOf(
             Route::class,

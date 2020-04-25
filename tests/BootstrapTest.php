@@ -9,7 +9,7 @@ class BootstrapTest extends TestCase
 {
     public function testRun()
     {
-        $run = new Boostrap;
+        $run = new Boostrap();
 
         $this->assertNull($run->run(php_sapi_name()));
     }

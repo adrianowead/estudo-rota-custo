@@ -9,7 +9,7 @@ class WebTest extends TestCase
 {
     public function testDispatchInput()
     {
-        $web = new Web;
+        $web = new Web();
 
         $this->assertNull($web->dispatchInput());
     }

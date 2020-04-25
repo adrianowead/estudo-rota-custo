@@ -16,7 +16,7 @@ trait CalcRoute
     {
         parent::__construct();
 
-        $model = new Routes;
+        $model = new Routes();
 
         $this->routes = $model->getAll();
     }
@@ -78,7 +78,9 @@ trait CalcRoute
     private function findAllOutliers(string $code, array $routes, $type = null): array
     {
         return array_filter($routes, function ($route) use ($code, $type) {
-            return (($route->from == $code && (!$type || $type == 'from')) || ($route->to == $code && (!$type || $type == 'to')));
+            return (
+                ($route->from == $code && (!$type || $type == 'from')) ||
+                ($route->to == $code && (!$type || $type == 'to')));
         });
     }
 
@@ -90,7 +92,10 @@ trait CalcRoute
             $line = array_values($this->followBreadcrumb($item));
 
             if (sizeof($line) > 1) {
-                if ($line[0]->from == $this->inputs['%pontoOrigem%'] && end($line)->to == $this->inputs['%pontoDestino%']) {
+                if (
+                    $line[0]->from == $this->inputs['%pontoOrigem%'] &&
+                    end($line)->to == $this->inputs['%pontoDestino%']
+                ) {
                     $paths[] = $line;
                 }
             }

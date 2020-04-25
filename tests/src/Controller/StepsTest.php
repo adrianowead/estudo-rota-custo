@@ -9,14 +9,14 @@ class StepTest extends TestCase
 {
     public function testGetUndefinedProperty()
     {
-        $steps = new Steps;
+        $steps = new Steps();
 
         $this->assertNull($steps->testNullReturn);
     }
 
     public function testGetPublicProperty()
     {
-        $steps = new Steps;
+        $steps = new Steps();
 
         $this->assertNotEmpty($steps->steps);
     }

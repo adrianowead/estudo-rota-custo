@@ -9,7 +9,7 @@ class CliTest extends TestCase
 {
     public function testWatchParams()
     {
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('watchParams');
@@ -34,7 +34,7 @@ class CliTest extends TestCase
         $string = "Olá %teste%";
         $expected = "Olá João";
 
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('replaceVars');
@@ -54,7 +54,7 @@ class CliTest extends TestCase
         $string = "Este é um teste";
         $expected = $string;
 
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('typeCli');
@@ -72,7 +72,7 @@ class CliTest extends TestCase
         $string = "Este é um teste|0.001|";
         $expected = "Este é um teste";
 
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('performText');
@@ -87,7 +87,7 @@ class CliTest extends TestCase
 
     public function testCatchInput()
     {
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('catchInput');
@@ -100,7 +100,7 @@ class CliTest extends TestCase
 
     public function testPersistAsk()
     {
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('persistAsk');
@@ -115,7 +115,7 @@ class CliTest extends TestCase
 
     public function testDispatchInput()
     {
-        $cli = new Cli;
+        $cli = new Cli();
 
         $reflect = new \ReflectionObject($cli);
         $method = $reflect->getMethod('dispatchInput');
