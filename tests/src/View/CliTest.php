@@ -52,7 +52,7 @@ class CliTest extends TestCase
     public function testTypeCli()
     {
         $string = "Este é um teste";
-        $expected = $string . chr(13) . chr(10);
+        $expected = $string;
 
         $cli = new Cli;
 
@@ -62,7 +62,7 @@ class CliTest extends TestCase
 
         ob_start();
         $method->invoke($cli, $string);
-        $out = ob_get_clean();
+        $out = str_replace(chr(13) . chr(10), '', ob_get_clean());
 
         $this->assertEquals($expected, $out);
     }
@@ -70,7 +70,7 @@ class CliTest extends TestCase
     public function testPerformText()
     {
         $string = "Este é um teste|0.001|";
-        $expected = "Este é um teste" . chr(13) . chr(10) . chr(13) . chr(10);
+        $expected = "Este é um teste";
 
         $cli = new Cli;
 
@@ -80,7 +80,7 @@ class CliTest extends TestCase
 
         ob_start();
         $method->invoke($cli, $string);
-        $out = ob_get_clean();
+        $out = str_replace(chr(13) . chr(10), '', ob_get_clean());
 
         $this->assertEquals($expected, $out);
     }

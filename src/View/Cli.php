@@ -91,6 +91,8 @@ final class Cli extends Flow
                 $this->typeCli($v);
             }
         }
+
+        echo chr(13) . chr(10);
     }
 
     private function replaceVars($string)
@@ -112,7 +114,5 @@ final class Cli extends Flow
             echo $text[$y];
             $this->setSleep($this->timeWriteLetter);
         }
-
-        echo chr(13) . chr(10);
     }
 }
