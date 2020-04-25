@@ -9,4 +9,8 @@ final class Web extends Flow
     public function dispatchInput()
     {
     }
+
+    public function checkTripPossible()
+    {
+    }
 }

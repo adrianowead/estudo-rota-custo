@@ -13,4 +13,11 @@ class WebTest extends TestCase
 
         $this->assertNull($web->dispatchInput());
     }
+
+    public function testCheckTripPossible()
+    {
+        $web = new Web();
+
+        $this->assertNull($web->checkTripPossible());
+    }
 }

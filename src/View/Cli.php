@@ -10,7 +10,6 @@ final class Cli extends Flow
     use CalcRoute;
 
     private $timeWriteLetter = 20000;
-    private $inputs = [];
 
     public function dispatchInput()
     {
@@ -50,7 +49,7 @@ final class Cli extends Flow
         }
     }
 
-    private function checkTripPossible()
+    public function checkTripPossible()
     {
         if (!$this->allMatch || sizeof($this->allMatch) == 0) {
             $this->performText($this->config->routeNotFound);
@@ -110,19 +109,6 @@ final class Cli extends Flow
         }
 
         echo chr(13) . chr(10);
-    }
-
-    private function replaceVars($string)
-    {
-        if (sizeof($this->inputs) > 0) {
-            $string = str_replace(
-                array_keys($this->inputs),
-                $this->inputs,
-                $string
-            );
-        }
-
-        return $string;
     }
 
     private function typeCli($text)

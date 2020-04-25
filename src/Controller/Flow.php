@@ -8,6 +8,7 @@ abstract class Flow
 {
     private $steps;
     public $config;
+    public $inputs = [];
 
     public function __construct()
     {
@@ -58,5 +59,19 @@ abstract class Flow
         usleep(\PHPUNIT_TEST_IS_RUNNING ? 0 : $time);
     }
 
+    public function replaceVars($string)
+    {
+        if (sizeof($this->inputs) > 0) {
+            $string = str_replace(
+                array_keys($this->inputs),
+                $this->inputs,
+                $string
+            );
+        }
+
+        return $string;
+    }
+
     abstract public function dispatchInput();
+    abstract public function checkTripPossible();
 }
