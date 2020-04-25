@@ -19,7 +19,7 @@ class CliTest extends TestCase
         $property->setAccessible(true);
         $property->setValue($cli, [
             '%pontoOrigem%' => "GRU",
-            '%pontoDestino%' => "CXJ",
+            '%pontoDestino%' => "ORL",
         ]);
 
         $out = $method->invoke($cli);
@@ -95,7 +95,7 @@ class CliTest extends TestCase
 
         $out = $method->invoke($cli);
 
-        $this->assertEquals("test", $out);
+        $this->assertEquals("GRU", $out);
     }
 
     public function testPersistAsk()

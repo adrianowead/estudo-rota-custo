@@ -57,7 +57,9 @@ final class Cli extends Flow
 
             $this->setSleep($this->config->timeWait * 1000000);
 
-            $this->setStep(7);
+            if (!\PHPUNIT_TEST_IS_RUNNING) {
+                $this->setStep(7);
+            }
 
             unset($this->inputs['%pontoOrigem%']);
             unset($this->inputs['%pontoDestino%']);
@@ -79,9 +81,9 @@ final class Cli extends Flow
     {
         if (PHP_OS == 'WINNT') {
             echo "> ";
-            $line = \PHPUNIT_TEST_IS_RUNNING ? 'test' : trim(stream_get_line(STDIN, 1024, PHP_EOL));
+            $line = \PHPUNIT_TEST_IS_RUNNING ? 'GRU' : trim(stream_get_line(STDIN, 1024, PHP_EOL));
         } else {
-            $line = \PHPUNIT_TEST_IS_RUNNING ? 'test' : trim(readline("> "));
+            $line = \PHPUNIT_TEST_IS_RUNNING ? 'GRU' : trim(readline("> "));
         }
 
         $line = trim($line);
