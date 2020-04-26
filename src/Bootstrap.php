@@ -4,6 +4,8 @@ namespace Wead;
 
 use Wead\View\Cli;
 use Wead\View\Web;
+use Wead\Http\Router;
+use Wead\Http\Request;
 
 final class Boostrap
 {
@@ -17,12 +19,29 @@ final class Boostrap
             $f = new Cli();
             $f->dispatchInput();
         } else {
-            $f = new Web();
-            $f->render();
+            $this->listenRoutes();
         }
 
         if (\PHPUNIT_TEST_IS_RUNNING) {
             ob_get_clean();
         }
+    }
+
+    public function listenRoutes()
+    {
+        $http = new Router(new Request);
+        $web = new Web;
+
+        $http->get('/', function (Request $request) use ($web) {
+            return $web->welcomeAction($request);
+        });
+
+        $http->get('/ajax', function (Request $request) use ($web) {
+            return $web->ajaxAction($request);
+        });
+
+        $http->post('/step', function (Request $request) use ($web) {
+            return $web->ajaxAction($request);
+        });
     }
 }
