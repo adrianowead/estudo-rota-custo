@@ -23,7 +23,7 @@ trait CalcRoute
 
     private function routeAssemble(): array
     {
-        $allFrom = $this->findAllOutliers($this->inputs['%pontoOrigem%'], $this->routes, 'from');
+        $allFrom = $this->findAllOutliers($this->from, $this->routes, 'from');
         $allMatch = $this->pathFinder($allFrom);
 
         foreach ($allMatch as $k => $path) {
@@ -93,8 +93,8 @@ trait CalcRoute
 
             if (sizeof($line) > 1) {
                 if (
-                    $line[0]->from == $this->inputs['%pontoOrigem%'] &&
-                    end($line)->to == $this->inputs['%pontoDestino%']
+                    $line[0]->from == $this->from &&
+                    end($line)->to == $this->to
                 ) {
                     $paths[] = $line;
                 }
@@ -113,7 +113,7 @@ trait CalcRoute
 
             $list[] = $start;
 
-            if ($start->to == $this->inputs['%pontoDestino%']) {
+            if ($start->to == $this->to) {
                 break;
             }
         }
