@@ -1,0 +1,119 @@
+{
+    "timeWait": 3,
+    "defaultError": "Desculpe|1.4|, como comentei eu sou burro :(",
+    "defaultSuggestions": "Não entendi bem|1.4|, estas são algumas opções de resposta:",
+    "routeNotFound": "Desculpe|0.9|, mas não contrei uma rota entre estes locais.|0.9| Vamos tentar novamente...",
+    "steps": [{
+        "id": 0,
+        "text": "Olá|1.2|, me chamo Adriano Maciel",
+        "wait": 2,
+        "required": false,
+        "namespace": null,
+        "next": 1
+    }, {
+        "id": 1,
+        "text": "Antes de começar|1.2|, por favor|1.2|, preciso saber qual é o seu nome",
+        "wait": 2,
+        "required": true,
+        "namespace": "%nomeUsuario%",
+        "next": 2
+    }, {
+        "id": 2,
+        "text": "Oi %nomeUsuario%!",
+        "wait": 3,
+        "required": false,
+        "namespace": null,
+        "next": 3
+    }, {
+        "id": 3,
+        "text": "Agora que fomos devidamente apresentados|1.2|, vamos aos negócios!",
+        "wait": 3,
+        "required": false,
+        "namespace": null,
+        "next": 4
+    }, {
+        "id": 4,
+        "text": "Sei que você é uma pessoa que adora viajar|1.2|, todos os humanos adoram|1.7|, ou quase...",
+        "wait": 5,
+        "required": false,
+        "namespace": null,
+        "next": 5
+    }, {
+        "id": 5,
+        "text": "Mas me diga, de onde você vai partir?|1.4| Sou um sistema burro|1.4|, entáo preciso que você me diga a sigla do aeroporto...",
+        "wait": 2,
+        "required": false,
+        "namespace": null,
+        "next": 6
+    }, {
+        "id": 6,
+        "text": "Por exemplo|1.4|, se for para Guarulhos|1.4|, informe GRU",
+        "wait": 4,
+        "required": false,
+        "namespace": null,
+        "next": 7
+    }, {
+        "id": 7,
+        "text": "Então, de onde você vai partir?",
+        "wait": 1,
+        "required": true,
+        "namespace": "%pontoOrigem%",
+        "next": 8
+    }, {
+        "id": 8,
+        "text": "Uau!|1.7| Eu nunca estive neste lugar :(",
+        "wait": 4,
+        "required": false,
+        "namespace": null,
+        "next": 9
+    }, {
+        "id": 9,
+        "text": "E para onde você vai?|1.7| Algum lugar exótico?",
+        "wait": 3,
+        "required": true,
+        "namespace": "%pontoDestino%",
+        "next": 10
+    }, {
+        "id": 10,
+        "text": "Nossa!|1.4| Quem me dera algum dia fazer esta viajem!",
+        "wait": 4,
+        "required": false,
+        "namespace": null,
+        "next": 11
+    }, {
+        "id": 11,
+        "text": "Como sistemas burros não ganham dinheiro|1.4|, mas humanos inteligentes sim...",
+        "wait": 2,
+        "required": false,
+        "namespace": null,
+        "next": 12
+    }, {
+        "id": 12,
+        "text": "Você fará um vôo %tipoDeViajem%|1.4|, sua rota será:%checkPoints%",
+        "wait": 5,
+        "required": false,
+        "namespace": null,
+        "next": 13
+    }, {
+        "id": 13,
+        "text": "E o custo total é:|1.4| %valorTotal%",
+        "wait": 4,
+        "required": false,
+        "namespace": null,
+        "next": 14
+    }, {
+        "id": 14,
+        "text": "Obrigado por viajar com a 'AsaQuebrada AirLines!'",
+        "wait": 5,
+        "required": false,
+        "namespace": null,
+        "next": 15
+    }, {
+        "id": 15,
+        "text": "",
+        "wait": 0,
+        "required": false,
+        "namespace": null,
+        "next": false
+    }]
+}
