@@ -2,8 +2,8 @@
 
 namespace Wead\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Wead\Boostrap;
+use PHPUnit\Framework\TestCase;
 
 class BootstrapTest extends TestCase
 {
@@ -12,16 +12,5 @@ class BootstrapTest extends TestCase
         $run = new Boostrap();
 
         $this->assertNull($run->run('cli'));
-    }
-
-    public function testRunWeb()
-    {
-        $run = new Boostrap();
-
-        ob_start();
-        $run->run('web');
-        $out = ob_get_clean();
-
-        $this->assertNotNull($out);
     }
 }
