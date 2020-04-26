@@ -126,4 +126,37 @@ class WebTest extends TestCase
         $data = $response->getBody(true);
         $this->assertStringContainsString('html', $data);
     }
+
+    public function testQuoteApiActionHttp()
+    {
+        $response = $this->http->get('/quote/GRU/SCL');
+
+        $this->assertEquals(200, $response->getStatusCode());
+        $data = $response->getBody(true);
+
+        @json_encode($data);
+
+        $this->assertTrue((json_last_error() === JSON_ERROR_NONE));
+    }
+
+    public function testWrongParamsHttp()
+    {
+        $response = $this->http->get('/quote/GRU');
+
+        $this->assertEquals(418, $response->getStatusCode());
+    }
+
+    public function testNotAllowedMethodHttp()
+    {
+        $response = $this->http->post('/');
+
+        $this->assertEquals(405, $response->getStatusCode());
+    }
+
+    public function testNotFoundHttp()
+    {
+        $response = $this->http->get('/phpunit');
+
+        $this->assertEquals(404, $response->getStatusCode());
+    }
 }
