@@ -3,7 +3,7 @@
 Este projeto é um teste de como seria suportar suas formas de interação com o usuário, via CLI e via Web.
 
 ## Necessário
-[![Supported PHP version](https://img.shields.io/badge/PHP->%3D%207.1-blue.svg)]()
+[![Supported PHP version](https://img.shields.io/badge/PHP->%3D%207.2-blue.svg)]()
 
 ## Instalação
 
@@ -33,7 +33,13 @@ Feito isso iniciará a comunicação via CLI.
 
 ## Rotas novas
 
-Para carregar novas rotas, basta __editar__ o arquivo [__exemplo.csv__](./exemplo.csv), mantendo a mesma estrutura:
+Para carregar novas rotas, basta __editar__ o arquivo [__exemplo.csv__](./exemplo.csv), mantendo a mesma estrutura (sem cabeçalho) e separado por vírgula:
+
+```csv
+GRU,CXJ,12
+CXJ,POA,33
+GRU,POA,22
+```
 
 | Origem  | Destino  | Valor  |
 |:-:|:-:|:-:|
