@@ -72,7 +72,7 @@ class WebTest extends TestCase
         $web = new Web();
 
         ob_start();
-        $web->welcomeAction(new Request);
+        $web->welcomeAction(new Request());
         $out = ob_get_clean();
 
         $this->assertNotNull($out);
@@ -83,7 +83,7 @@ class WebTest extends TestCase
         $web = new Web();
 
         ob_start();
-        $web->ajaxAction(new Request);
+        $web->ajaxAction(new Request());
         $out = ob_get_clean();
 
         $this->assertNotNull($out);
@@ -94,7 +94,7 @@ class WebTest extends TestCase
         $web = new Web();
 
         ob_start();
-        $web->socketAction(new Request);
+        $web->socketAction(new Request());
         $out = ob_get_clean();
 
         $this->assertNotNull($out);

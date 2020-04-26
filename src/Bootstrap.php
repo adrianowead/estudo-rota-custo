@@ -29,8 +29,8 @@ final class Boostrap
 
     public function listenRoutes()
     {
-        $http = new Router(new Request);
-        $web = new Web;
+        $http = new Router(new Request());
+        $web = new Web();
 
         $http->get('/', function (Request $request) use ($web) {
             return $web->welcomeAction($request);
