@@ -20,4 +20,15 @@ class WebTest extends TestCase
 
         $this->assertNull($web->checkTripPossible());
     }
+
+    public function testRender()
+    {
+        $web = new Web();
+
+        ob_start();
+        $web->render();
+        $out = ob_get_clean();
+
+        $this->assertNotNull($out);
+    }
 }
