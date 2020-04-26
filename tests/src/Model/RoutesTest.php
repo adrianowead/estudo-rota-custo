@@ -24,4 +24,22 @@ class RoutesTest extends TestCase
             $model->getAll()
         );
     }
+
+    public function testInsertNew()
+    {
+        $data = [
+            'from' => 'GRU',
+            'to' => 'BRC',
+            'price' => 10
+        ];
+
+        $route = (object) array_values($data);
+        $route = new Route($route);
+
+        $model = new Routes();
+
+        $insert = $model->insert($route);
+
+        $this->assertNull($insert);
+    }
 }
