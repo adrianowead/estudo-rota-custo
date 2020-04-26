@@ -35,7 +35,7 @@ final class Request implements IRequest
     public function getBody()
     {
         if ($this->requestMethod === "GET") {
-            return;
+            return $_GET;
         }
 
         if ($this->requestMethod == "POST") {

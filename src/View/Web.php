@@ -39,8 +39,8 @@ final class Web extends Flow
 
     public function quoteApiAction(Request $request): string
     {
-        $this->from = $_GET['from'];
-        $this->to = $_GET['to'];
+        $this->from = $request->getBody()['from'];
+        $this->to = $request->getBody()['to'];
 
         return json_encode([
             "route" => implode(",", $this->routeAssemble()),

@@ -100,6 +100,21 @@ class WebTest extends TestCase
         $this->assertNotNull($out);
     }
 
+    public function testQuoteAction()
+    {
+        $_GET['from'] = "GRU";
+        $_GET['to'] = "SCL";
+
+        $web = new Web();
+        $out = $web->quoteApiAction(new Request());
+
+        @json_encode($out);
+
+        $this->assertTrue((json_last_error() === JSON_ERROR_NONE));
+        $this->assertStringContainsString('GRU', $out);
+        $this->assertStringContainsString('SCL', $out);
+    }
+
     public function testWelcomeActionHttp()
     {
         $response = $this->http->get('/');
