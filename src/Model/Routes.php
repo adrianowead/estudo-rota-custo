@@ -28,4 +28,15 @@ final class Routes
 
         return $data;
     }
+
+    public function insert(Route $route): void
+    {
+        if (!in_array($route, $this->getAll())) {
+            $file = fopen($this->src, "a+");
+
+            fwrite($file, implode(",", (array) $route) . chr(13) . chr(10));
+
+            fclose($file);
+        }
+    }
 }

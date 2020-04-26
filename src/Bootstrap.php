@@ -47,7 +47,11 @@ final class Boostrap
         });
 
         $http->get('/quote/{from}/{to}', function (Request $request) use ($api) {
-            return $api->quoteApiAction($request);
+            return $api->quoteAction($request);
+        });
+
+        $http->post('/route', function (Request $request) use ($api) {
+            return $api->newRouteAction($request);
         });
     }
 }
