@@ -19,12 +19,19 @@ final class Web extends Flow
 
     public function welcomeAction(Request $request): string
     {
-        return $this->render('index');
+        return $this->render('welcome', [
+            'message' => "Asa Quebrada AirLines!"
+        ]);
     }
 
     public function ajaxAction(Request $request): string
     {
         return $this->render('ajax');
+    }
+
+    public function socketAction(Request $request): string
+    {
+        return $this->render('socket');
     }
 
     public function render(string $view, array $params = []): string

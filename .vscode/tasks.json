@@ -3,7 +3,7 @@
     "tasks": [{
         "label": "Sass Compile",
         "type": "shell",
-        "command": "node-sass public/assets/sass/ -o public/assets/css/ --output-style compressed",
+        "command": "node-sass -w public/assets/sass/ -o public/assets/css/ --output-style compressed",
         "group": "build"
     }]
 }

@@ -1,5 +1,11 @@
 body,
 html {
-    background-color: #555;
-    color: #fff;
+    background-color: #dadada;
+    color: #6b6b6b;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
+
+@import "./welcome.scss"

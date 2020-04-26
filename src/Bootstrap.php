@@ -40,8 +40,8 @@ final class Boostrap
             return $web->ajaxAction($request);
         });
 
-        $http->post('/step', function (Request $request) use ($web) {
-            return $web->ajaxAction($request);
+        $http->get('/socket', function (Request $request) use ($web) {
+            return $web->socketAction($request);
         });
     }
 }
