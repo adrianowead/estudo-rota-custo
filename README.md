@@ -2,6 +2,13 @@
 
 Este projeto é um teste de como seria suportar suas formas de interação com o usuário, via CLI e via Web.
 
+[![Building](https://img.shields.io/circleci/build/github/adrianowead/estudo-rota-custo?token=master)]()
+[![Size](https://img.shields.io/github/repo-size/adrianowead/estudo-rota-custo)]()
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/badges/build.png?b=master)](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/build-status/master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/adrianowead/estudo-rota-custo/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
+
 ## Necessário
 [![Supported PHP version](https://img.shields.io/badge/PHP->%3D%207.2-blue.svg)]()
 
