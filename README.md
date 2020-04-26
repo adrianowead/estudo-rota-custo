@@ -73,3 +73,7 @@ $ composer run test tests/
 ### Disclaimer
 
 Até o presente momento este código foi testado em ambiente *nix (MacOS). Então é possível que em ambientes Windows ocorram alguns problemas com a interface via CLI.
+
+### Agradecimentos
+
+Obrigado ao [John](https://medium.com/@johnopaul) pelo ótimo [post](https://medium.com/the-andela-way/how-to-build-a-basic-server-side-routing-system-in-php-e52e613cf241) sobre criação de [rotas amigáveis](https://techterms.com/definition/friendly_url), semelhante ao funcionamento do [Laravel](https://laravel.com/docs/7.x/routing).
