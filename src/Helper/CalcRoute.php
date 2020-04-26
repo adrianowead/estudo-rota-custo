@@ -12,13 +12,6 @@ trait CalcRoute
     private $routes;
     private $allMatch;
 
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->reloadRoutes();
-    }
-
     public function reloadRoutes()
     {
         $model = new Routes();

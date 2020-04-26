@@ -2,6 +2,7 @@
 
 namespace Wead;
 
+use Wead\View\Api;
 use Wead\View\Cli;
 use Wead\View\Web;
 use Wead\Http\Router;
@@ -31,6 +32,7 @@ final class Boostrap
     {
         $http = new Router(new Request());
         $web = new Web();
+        $api = new Api();
 
         $http->get('/', function (Request $request) use ($web) {
             return $web->welcomeAction($request);
@@ -44,8 +46,8 @@ final class Boostrap
             return $web->socketAction($request);
         });
 
-        $http->get('/quote/{from}/{to}', function (Request $request) use ($web) {
-            return $web->quoteApiAction($request);
+        $http->get('/quote/{from}/{to}', function (Request $request) use ($api) {
+            return $api->quoteApiAction($request);
         });
     }
 }
