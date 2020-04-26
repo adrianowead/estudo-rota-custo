@@ -41,11 +41,19 @@ final class Router
     private function invalidMethodHandler()
     {
         header("{$this->request->serverProtocol} 405 Method Not Allowed");
+        exit;
     }
 
     private function defaultRequestHandler()
     {
         header("{$this->request->serverProtocol} 404 Not Found");
+        exit;
+    }
+
+    private function invalidUriParamsHandler()
+    {
+        header("{$this->request->serverProtocol} 418 I'm a teapot, incorrect params");
+        exit;
     }
 
     /**
@@ -53,8 +61,15 @@ final class Router
      */
     private function resolve()
     {
+        if (!property_exists($this, strtolower($this->request->requestMethod))) {
+            $this->invalidMethodHandler();
+        }
+
         $methodDictionary = $this->{strtolower($this->request->requestMethod)};
         $formatedRoute = $this->formatRoute($this->request->requestUri);
+
+        $this->extractParams($methodDictionary, $formatedRoute);
+
         $method = $methodDictionary[$formatedRoute];
 
         if (is_null($method)) {
@@ -63,6 +78,38 @@ final class Router
         }
 
         echo call_user_func_array($method, array($this->request));
+    }
+
+    private function extractParams(array &$dictionary, string &$uri): void
+    {
+        $params = preg_split('/(\/+)/', $uri);
+        array_shift($params);
+
+        foreach ($dictionary as $route => $v) {
+            $fields = preg_split('/(\/+)/', $route);
+            array_shift($fields);
+
+            if (sizeof($fields) > 1) {
+                $dictionary["/{$fields[0]}"] = $dictionary[$route];
+                unset($dictionary[$route]);
+
+                if ($params[0] == $fields[0]) {
+                    $uri = "/{$fields[0]}";
+
+                    array_shift($params);
+                    array_shift($fields);
+
+                    if (sizeof($params) != sizeof($fields)) {
+                        $this->invalidUriParamsHandler();
+                    }
+
+                    foreach ($fields as $k => $field) {
+                        $field = preg_replace('/[^0-9A-Za-z]/', '', $field);
+                        $_GET[$field] = $params[$k];
+                    }
+                }
+            }
+        }
     }
 
     function __destruct()

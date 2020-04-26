@@ -43,5 +43,9 @@ final class Boostrap
         $http->get('/socket', function (Request $request) use ($web) {
             return $web->socketAction($request);
         });
+
+        $http->get('/quote/{from}/{to}', function (Request $request) use ($web) {
+            return $web->quoteApiAction($request);
+        });
     }
 }
