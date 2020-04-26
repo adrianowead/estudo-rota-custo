@@ -16,7 +16,7 @@ Este projeto é um teste de como seria suportar suas formas de interação com o
 
 Este projeto não usa nenhum compoente de terceiros, somente pacotes necessários para os testes unitários e demais recursos de debug.
 
-Neste caso o composer deve ser executado para gerar o __autoload__, com o comando abaixo:
+Neste caso o composer deve ser executado para gerar o [__autoload__](https://getcomposer.org/doc/04-schema.md#psr-4), com o comando abaixo:
 
 ```bash
 $ composer install --no-dev --optimize-autoloader
@@ -57,3 +57,19 @@ GRU,POA,22
 ## Alteração de mensagens
 
 Para alterar as mensagens, basta modificar o arquivo [__steps.json__](./steps.json).
+
+
+### Rodar os testes
+
+É necessário ter instalada as dependências de desenvolvimento definidas no [__composer.json](./composer.json), além de ter habilidado no seu sistema o [__xdebug__](https://xdebug.org/docs/install) para gerar o relatório de cobertuda de código.
+
+Uma vez que o ambiente esteja configurado, execute o comando abaixo:
+
+```bash
+$ composer run test tests/
+```
+
+
+### Disclaimer
+
+Até o presente momento este código foi testado em ambiente *nix (MacOS). Então é possível que em ambientes Windows ocorram alguns problemas com a interface via CLI.
