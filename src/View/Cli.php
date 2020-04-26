@@ -36,7 +36,6 @@ final class Cli extends Flow
 
     private function watchParams()
     {
-        // monitorando quando os inputs chaves forem preenchidos
         if (isset($this->inputs['%pontoOrigem%']) && isset($this->inputs['%pontoDestino%'])) {
             $this->from = $this->inputs['%pontoOrigem%'];
             $this->to = $this->inputs['%pontoDestino%'];

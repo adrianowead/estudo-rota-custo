@@ -3,10 +3,13 @@
 namespace Wead\View;
 
 use Wead\Controller\Flow;
+use Wead\Helper\CalcRoute;
 use Wead\Http\Request;
 
 final class Web extends Flow
 {
+    use CalcRoute;
+
     private $src;
     private $defaultParams = [
         'title' => 'Asa Quebrada'
@@ -36,7 +39,13 @@ final class Web extends Flow
 
     public function quoteApiAction(Request $request): string
     {
-        return json_encode($_GET);
+        $this->from = $_GET['from'];
+        $this->to = $_GET['to'];
+
+        return json_encode([
+            "route" => implode(",", $this->routeAssemble()),
+            "price" => $this->getTotalValue(false)
+        ]);
     }
 
     public function render(string $view, array $params = []): string

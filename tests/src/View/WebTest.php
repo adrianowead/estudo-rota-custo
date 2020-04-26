@@ -137,6 +137,8 @@ class WebTest extends TestCase
         @json_encode($data);
 
         $this->assertTrue((json_last_error() === JSON_ERROR_NONE));
+        $this->assertStringContainsString('GRU', $data);
+        $this->assertStringContainsString('SCL', $data);
     }
 
     public function testWrongParamsHttp()

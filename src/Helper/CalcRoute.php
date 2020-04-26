@@ -16,6 +16,11 @@ trait CalcRoute
     {
         parent::__construct();
 
+        $this->reloadRoutes();
+    }
+
+    public function reloadRoutes()
+    {
         $model = new Routes();
 
         $this->routes = $model->getAll();
@@ -23,6 +28,8 @@ trait CalcRoute
 
     private function routeAssemble(): array
     {
+        $this->reloadRoutes();
+
         $allFrom = $this->findAllOutliers($this->from, $this->routes, 'from');
         $allMatch = $this->pathFinder($allFrom);
 
@@ -66,13 +73,17 @@ trait CalcRoute
         return sizeof($this->allMatch[key($this->allMatch)]) > 1 ? "com escala" : "direto";
     }
 
-    private function getTotalValue(): string
+    private function getTotalValue($formated = true): string
     {
         if (!$this->allMatch) {
             return "";
         }
 
-        return "R$ " . number_format(key($this->allMatch), 2, ',', '.');
+        if ($formated) {
+            return "R$ " . number_format(key($this->allMatch), 2, ',', '.');
+        } else {
+            return key($this->allMatch);
+        }
     }
 
     private function findAllOutliers(string $code, array $routes, $type = null): array
