@@ -9,11 +9,23 @@ Este projeto é um teste de como seria suportar suas formas de interação com o
 
 Este projeto não usa nenhum compoente de terceiros, somente pacotes necessários para os testes unitários e demais recursos de debug.
 
+Neste caso o composer deve ser executado para gerar o __autoload__, com o comando abaixo:
+
+```bash
+$ composer install --no-dev --optimize-autoloader
+```
+
+Ou apenas o autoload mesmo:
+
+```bash
+$ composer dumpautoload
+```
+
 ### Utilização via CLI
 
 Para ver a utilização via CLI, execute o [__index.php__](./index.php).
 
-```
+```bash
 $ php index.php
 ```
 
