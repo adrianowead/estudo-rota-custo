@@ -34,6 +34,11 @@ final class Web extends Flow
         return $this->render('socket');
     }
 
+    public function quoteApiAction(Request $request): string
+    {
+        return json_encode($_GET);
+    }
+
     public function render(string $view, array $params = []): string
     {
         $params = array_merge($this->defaultParams, $params);
