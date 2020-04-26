@@ -33,9 +33,7 @@ final class Routes
     {
         if (!in_array($route, $this->getAll())) {
             $file = fopen($this->src, "a+");
-
-            fwrite($file, implode(",", (array) $route) . chr(13) . chr(10));
-
+            fputcsv($file, (array) $route);
             fclose($file);
         }
     }
