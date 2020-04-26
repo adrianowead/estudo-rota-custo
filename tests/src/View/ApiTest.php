@@ -48,7 +48,7 @@ class ApiTest extends TestCase
         $_GET['to'] = "SCL";
 
         $api = new Api();
-        $out = $api->quoteApiAction(new Request());
+        $out = $api->quoteAction(new Request());
 
         @json_encode($out);
 

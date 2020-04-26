@@ -150,7 +150,7 @@ class WebTest extends TestCase
 
     public function testNotAllowedMethodHttp()
     {
-        $response = $this->http->post('/');
+        $response = $this->http->put('/');
 
         $this->assertEquals(405, $response->getStatusCode());
     }
