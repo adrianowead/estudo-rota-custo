@@ -54,6 +54,7 @@ GRU,POA,22
 | CXJ  | POA  | 33  |
 | GRU  | POA  | 22  |
 
+Ou consumir o endpoint para cadastro de novas rotas via API, porém deve haver um servidor web rodando.
 
 ## Consumo de endpoints
 
