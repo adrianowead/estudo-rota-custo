@@ -54,7 +54,39 @@ GRU,POA,22
 | CXJ  | POA  | 33  |
 | GRU  | POA  | 22  |
 
-## Alteração de mensagens
+Ou consumir o endpoint para cadastro de novas rotas via API, porém deve haver um servidor web rodando.
+
+## Consumo de endpoints
+
+Para Utilização as APIs, basta seguir conforme os exemplos abaixo:
+
+> Os exemplos abaixo consideram que o [ambiente web](#utilização-via-web) esteja sendo executado.
+
+* __Cadastro de nova rota__
+
+```bash
+$ curl -d "from=GRU&to=REC&price=32" -X POST http://localhost:8000/route
+```
+
+* __Consulta de uma rota__
+
+```bash
+$ curl -X GET http://localhost:8000/quote/GRU/SCL
+```
+
+## Utilização via Web
+
+Para rodar a versão web do projeto, basta configurar seu servidor web, tendo como raíz a pasta onde está o arquivo [__index.php__](./index.php)
+
+Ou executar o servidor embutido, como no exemplo abaixo:
+
+```bash
+$ php -S localhost:8000 -t .
+```
+
+Mesmo no ambiente web, não foi utilizada nenhuma biblioteca, o __JS__ e __CSS__ foram escritos do zero, valendo-se apenas da compilação de __TS__ e __SCSS__ respectivamente. Onde os fontes estão [neste diretório](./assets).
+
+### Alteração de mensagens
 
 Para alterar as mensagens, basta modificar o arquivo [__steps.json__](./steps.json).
 

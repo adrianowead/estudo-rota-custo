@@ -5,6 +5,7 @@ class AsaQuebrada {
     private waitingServer: boolean = false;
     private from: string = '';
     private to: string = '';
+    private nomeCliente: string = '';
 
     constructor() {
         this.start();
@@ -61,6 +62,10 @@ class AsaQuebrada {
 
                     if (step.namespace == '%pontoDestino%') {
                         this.to = value;
+                    }
+
+                    if (step.namespace == '%nomeUsuario%') {
+                        this.nomeCliente = value;
                     }
                 }
 
@@ -133,6 +138,10 @@ class AsaQuebrada {
     }
 
     private requestNextStep() {
+        if (this.nextStep == 15) {
+            this.cortesia();
+        }
+
         if (typeof (this.nextStep) != "number") {
             return false;
         }
@@ -163,8 +172,12 @@ class AsaQuebrada {
         this.requestNextStep();
     }
 
-    private setMessage(messsage: string) {
-        document.getElementById("message").innerHTML = messsage;
+    private setMessage(message: string) {
+        message = message.trim();
+
+        if (message.length > 0) {
+            document.getElementById("message").innerHTML = message;
+        }
     }
 
     private setStatus(messsage: string) {
@@ -177,6 +190,13 @@ class AsaQuebrada {
         } else {
             status.style.display = "block";
         }
+    }
+
+    private cortesia() {
+        this.setMessage(`Agora ${this.nomeCliente}, pegue sua pipoca 🍿, e desfrute de nossa programação à bordo 🤓`);
+
+        // @ts-ignore: Unreachable code error
+        Start(); // função externa
     }
 }
 
