@@ -6,6 +6,7 @@ use Wead\Http\Request;
 use Wead\Model\Routes;
 use Wead\Helper\CalcRoute;
 use Wead\Controller\dto\Route;
+use Wead\Helper\ExtractStarWars;
 
 final class Api
 {
@@ -36,5 +37,10 @@ final class Api
                 $model->insert(new Route((object) array_values($data)));
             }
         }
+    }
+
+    public function getFilm(Request $request): string
+    {
+        return ExtractStarWars::getContent();
     }
 }
