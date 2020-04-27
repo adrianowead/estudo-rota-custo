@@ -3,7 +3,18 @@
     "tasks": [{
         "label": "Sass Compile",
         "type": "shell",
-        "command": "node-sass -w public/assets/sass/ -o public/assets/css/ --output-style compressed",
+        "command": "node-sass -w assets/sass/ -o public/assets/css/ --output-style compressed",
         "group": "build"
+    }, {
+        "label": "TypeScript Compile",
+        "type": "typescript",
+        "tsconfig": "tsconfig.json",
+        "problemMatcher": [
+            "$tsc"
+        ],
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        }
     }]
 }

@@ -1,3 +1,5 @@
+@import "./variables";
+
 .welcome {
     display: inline-table;
     width: 100%;
@@ -34,7 +36,7 @@
         justify-content: center;
         color: #fff;
         background-color: #626262;
-        border: 1px solid #424242;
+        border: 1px solid $borderColor;
         border-radius: 10px;
         width: 45%;
         margin: 0 auto;

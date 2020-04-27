@@ -1,11 +1,14 @@
+@import "./variables";
+
 body,
 html {
     background-color: #dadada;
     color: #6b6b6b;
-    font-family: 'Roboto', sans-serif;
+    font-family: $roboto;
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
-@import "./welcome.scss"
+@import "./welcome.scss";
+@import "./ajax.scss"
