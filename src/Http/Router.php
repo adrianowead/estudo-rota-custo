@@ -70,6 +70,10 @@ final class Router
 
         $this->extractParams($methodDictionary, $formatedRoute);
 
+        if (!isset($methodDictionary[$formatedRoute])) {
+            $this->invalidUriParamsHandler();
+        }
+
         $method = $methodDictionary[$formatedRoute];
 
         if (is_null($method)) {

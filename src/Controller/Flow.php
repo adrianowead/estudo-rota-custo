@@ -72,6 +72,12 @@ abstract class Flow
         return $string;
     }
 
-    abstract public function dispatchInput();
+    public function cleanUpStepMessage(Step $step): Step
+    {
+        $step->text = preg_replace('/\|.*?\|/', '', $step->text);
+
+        return $step;
+    }
+
     abstract public function checkTripPossible();
 }

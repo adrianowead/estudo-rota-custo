@@ -46,6 +46,10 @@ final class Boostrap
             return $web->socketAction($request);
         });
 
+        $http->get('/step/{position}', function (Request $request) use ($web) {
+            return $web->stepAction($request);
+        });
+
         $http->get('/quote/{from}/{to}', function (Request $request) use ($api) {
             return $api->quoteAction($request);
         });

@@ -15,11 +15,6 @@ final class Web extends Flow
         'title' => 'Asa Quebrada'
     ];
 
-    public function __construct()
-    {
-        $this->src = getcwd() . "/templates/";
-    }
-
     public function welcomeAction(Request $request): string
     {
         return $this->render('welcome', [
@@ -39,6 +34,8 @@ final class Web extends Flow
 
     public function render(string $view, array $params = []): string
     {
+        $this->src = getcwd() . "/templates/";
+
         $params = array_merge($this->defaultParams, $params);
 
         $html  = file_get_contents($this->src . "header.html");
@@ -52,8 +49,11 @@ final class Web extends Flow
         return $html;
     }
 
-    public function dispatchInput()
+    public function stepAction(Request $request): string
     {
+        $this->setStep($request->getBody()['position']);
+
+        return json_encode($this->cleanUpStepMessage($this->getCurrentStep()));
     }
 
     public function checkTripPossible()
