@@ -70,4 +70,16 @@ class ApiTest extends TestCase
         $this->assertStringContainsString('GRU', $data);
         $this->assertStringContainsString('SCL', $data);
     }
+
+    public function testNewRouteAction()
+    {
+        $_POST['from'] = "GRU";
+        $_POST['to'] = "SCL";
+        $_POST['price'] = "99";
+
+        $api = new Api();
+        $out = $api->newRouteAction(new Request());
+
+        $this->assertNull($out);
+    }
 }
