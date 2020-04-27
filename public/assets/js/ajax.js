@@ -6,6 +6,7 @@ var AsaQuebrada = (function () {
         this.waitingServer = false;
         this.from = '';
         this.to = '';
+        this.nomeCliente = '';
         this.start();
     }
     AsaQuebrada.prototype.performAjax = function (method, resource, success, error) {
@@ -54,6 +55,9 @@ var AsaQuebrada = (function () {
                     }
                     if (step.namespace == '%pontoDestino%') {
                         _this.to = value;
+                    }
+                    if (step.namespace == '%nomeUsuario%') {
+                        _this.nomeCliente = value;
                     }
                 }
                 _this.watchParams();
@@ -108,6 +112,9 @@ var AsaQuebrada = (function () {
     };
     AsaQuebrada.prototype.requestNextStep = function () {
         var _this = this;
+        if (this.nextStep == 15) {
+            this.cortesia();
+        }
         if (typeof (this.nextStep) != "number") {
             return false;
         }
@@ -127,8 +134,11 @@ var AsaQuebrada = (function () {
         this.setStatus("...inicializando...");
         this.requestNextStep();
     };
-    AsaQuebrada.prototype.setMessage = function (messsage) {
-        document.getElementById("message").innerHTML = messsage;
+    AsaQuebrada.prototype.setMessage = function (message) {
+        message = message.trim();
+        if (message.length > 0) {
+            document.getElementById("message").innerHTML = message;
+        }
     };
     AsaQuebrada.prototype.setStatus = function (messsage) {
         var status = document.getElementById("status");
@@ -139,6 +149,15 @@ var AsaQuebrada = (function () {
         else {
             status.style.display = "block";
         }
+    };
+    AsaQuebrada.prototype.cortesia = function () {
+        this.setMessage("Agora " + this.nomeCliente + ", pegue sua pipoca \uD83C\uDF7F, e desfrute de nossa programa\u00E7\u00E3o \u00E0 bordo \uD83E\uDD13");
+        Rewind();
+        var screen = document.getElementById("screen");
+        screen.style.display = "inline-block";
+        setTimeout(function () {
+            Start();
+        }, 2000);
     };
     return AsaQuebrada;
 }());

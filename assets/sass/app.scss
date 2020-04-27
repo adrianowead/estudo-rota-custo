@@ -10,5 +10,22 @@ html {
     height: 100%;
 }
 
+#screen {
+    text-align: left;
+    font-size: 15px;
+    font-family: Courier New, Fixed;
+    line-height: 16px;
+    width: 41em;
+    height: 212px;
+    border: 1px solid $borderColor;
+    border-radius: 15px;
+    display: none;
+    white-space: pre;
+    background-color: #000;
+    color: #fff;
+    padding: 40px;
+    box-shadow: #848383 0px 0px 50px;
+}
+
 @import "./welcome.scss";
 @import "./ajax.scss"
