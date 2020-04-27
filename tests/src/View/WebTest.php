@@ -42,13 +42,6 @@ class WebTest extends TestCase
         self::$process->stop();
     }
 
-    public function testDispatchInput()
-    {
-        $web = new Web();
-
-        $this->assertNull($web->dispatchInput());
-    }
-
     public function testCheckTripPossible()
     {
         $web = new Web();
@@ -153,12 +146,5 @@ class WebTest extends TestCase
         $response = $this->http->put('/');
 
         $this->assertEquals(405, $response->getStatusCode());
-    }
-
-    public function testNotFoundHttp()
-    {
-        $response = $this->http->get('/phpunit');
-
-        $this->assertEquals(404, $response->getStatusCode());
     }
 }
