@@ -1,5 +1,5 @@
 {
-    "timeWait": 3,
+    "timeWait": 7,
     "defaultError": "Desculpe|1.4|, como comentei eu sou burro :(",
     "defaultSuggestions": "Não entendi bem|1.4|, estas são algumas opções de resposta:",
     "routeNotFound": "Desculpe|0.9|, mas não contrei uma rota entre estes locais.|0.9| Vamos tentar novamente...",
@@ -40,8 +40,8 @@
         "next": 5
     }, {
         "id": 5,
-        "text": "Mas me diga, de onde você vai partir?|1.4| Sou um sistema burro|1.4|, entáo preciso que você me diga a sigla do aeroporto...",
-        "wait": 2,
+        "text": "Mas me diga, de onde você vai partir?|1.4| Sou um sistema burro|1.4|, então preciso que você me diga a sigla do aeroporto...",
+        "wait": 8,
         "required": false,
         "namespace": null,
         "next": 6
@@ -83,7 +83,7 @@
     }, {
         "id": 11,
         "text": "Como sistemas burros não ganham dinheiro|1.4|, mas humanos inteligentes sim...",
-        "wait": 2,
+        "wait": 6,
         "required": false,
         "namespace": null,
         "next": 12

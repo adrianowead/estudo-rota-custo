@@ -12,10 +12,8 @@ trait CalcRoute
     private $routes;
     private $allMatch;
 
-    public function __construct()
+    public function reloadRoutes()
     {
-        parent::__construct();
-
         $model = new Routes();
 
         $this->routes = $model->getAll();
@@ -23,7 +21,9 @@ trait CalcRoute
 
     private function routeAssemble(): array
     {
-        $allFrom = $this->findAllOutliers($this->inputs['%pontoOrigem%'], $this->routes, 'from');
+        $this->reloadRoutes();
+
+        $allFrom = $this->findAllOutliers($this->from, $this->routes, 'from');
         $allMatch = $this->pathFinder($allFrom);
 
         foreach ($allMatch as $k => $path) {
@@ -66,13 +66,17 @@ trait CalcRoute
         return sizeof($this->allMatch[key($this->allMatch)]) > 1 ? "com escala" : "direto";
     }
 
-    private function getTotalValue(): string
+    private function getTotalValue($formated = true): string
     {
         if (!$this->allMatch) {
             return "";
         }
 
-        return "R$ " . number_format(key($this->allMatch), 2, ',', '.');
+        if ($formated) {
+            return "R$ " . number_format(key($this->allMatch), 2, ',', '.');
+        } else {
+            return key($this->allMatch);
+        }
     }
 
     private function findAllOutliers(string $code, array $routes, $type = null): array
@@ -93,8 +97,8 @@ trait CalcRoute
 
             if (sizeof($line) > 1) {
                 if (
-                    $line[0]->from == $this->inputs['%pontoOrigem%'] &&
-                    end($line)->to == $this->inputs['%pontoDestino%']
+                    $line[0]->from == $this->from &&
+                    end($line)->to == $this->to
                 ) {
                     $paths[] = $line;
                 }
@@ -113,7 +117,7 @@ trait CalcRoute
 
             $list[] = $start;
 
-            if ($start->to == $this->inputs['%pontoDestino%']) {
+            if ($start->to == $this->to) {
                 break;
             }
         }

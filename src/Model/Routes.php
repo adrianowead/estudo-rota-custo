@@ -28,4 +28,13 @@ final class Routes
 
         return $data;
     }
+
+    public function insert(Route $route): void
+    {
+        if (!in_array($route, $this->getAll())) {
+            $file = fopen($this->src, "a+");
+            fputcsv($file, (array) $route);
+            fclose($file);
+        }
+    }
 }
