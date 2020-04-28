@@ -25,7 +25,7 @@ final class Api
 
     public function newRouteAction(Request $request): void
     {
-        $data = $request->getBody();
+        $data = $_POST;
 
         foreach ($data as $k => $v) {
             $data[$k] = trim($v);
@@ -39,7 +39,7 @@ final class Api
         }
     }
 
-    public function getFilm(Request $request): string
+    public function getFilmAction(Request $request): string
     {
         return ExtractStarWars::getContent();
     }

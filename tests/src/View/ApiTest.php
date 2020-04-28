@@ -82,4 +82,12 @@ class ApiTest extends TestCase
 
         $this->assertNull($out);
     }
+
+    public function testGetFilmAction()
+    {
+        $api = new Api();
+        $out = $api->getFilmAction(new Request());
+
+        $this->assertStringContainsString('E p i s o d e I V', $out);
+    }
 }

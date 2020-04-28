@@ -59,7 +59,7 @@ final class Boostrap
         });
 
         $http->get('/film', function (Request $request) use ($api) {
-            return $api->getFilm($request);
+            return $api->getFilmAction($request);
         });
     }
 }
