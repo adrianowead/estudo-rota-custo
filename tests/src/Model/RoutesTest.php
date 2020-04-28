@@ -12,7 +12,10 @@ class RoutesTest extends TestCase
     {
         $model = new Routes();
 
-        $this->assertIsArray($model->getAll());
+        $this->assertInstanceOf(
+            Route::class,
+            $model->getAll()->current()
+        );
     }
 
     public function testGetAllContainsSteps()
@@ -47,6 +50,6 @@ class RoutesTest extends TestCase
         $insert = $model->insert($route);
 
         $this->assertNull($insert);
-        $this->assertContains((array) $route, [(array) $model->getAll()[0]]);
+        $this->assertEquals($route, $model->getAll()->current());
     }
 }

@@ -79,47 +79,65 @@ trait CalcRoute
         }
     }
 
-    private function findAllOutliers(string $code, array $routes, $type = null): array
+    private function findAllOutliers(string $code, \SplObjectStorage $routes, $type = null): \SplStack
     {
-        return array_filter($routes, function ($route) use ($code, $type) {
-            return (
-                ($route->from == $code && (!$type || $type == 'from')) ||
-                ($route->to == $code && (!$type || $type == 'to')));
-        });
+        $found = new \SplStack();
+
+        while ($routes->valid()) {
+            if (
+                ($routes->current()->from == $code && (!$type || $type == 'from')) ||
+                ($routes->current()->to == $code && (!$type || $type == 'to'))
+            ) {
+                $found->push($routes->current());
+            }
+
+            $routes->next();
+        }
+
+        $found->rewind();
+
+        return $found;
     }
 
-    private function pathFinder(array $from): array
+    private function pathFinder(\SplStack $from): \SplObjectStorage
     {
-        $paths = [];
+        $paths = new \SplObjectStorage();
 
-        foreach ($from as $item) {
-            $line = array_values($this->followBreadcrumb($item));
+        while ($from->valid()) {
+            $line = $this->followBreadcrumb($from->current());
 
-            if (sizeof($line) > 1) {
-                if (
-                    $line[0]->from == $this->from &&
-                    end($line)->to == $this->to
-                ) {
-                    $paths[] = $line;
+            if ($line->count() > 1) {
+                if ($line->shift()->from == $this->from && $line->pop()->to == $this->to) {
+                    $paths->attach($line->current());
                 }
             }
+
+            $from->next();
         }
+
+        $paths->rewind();
 
         return $paths;
     }
 
-    private function followBreadcrumb(Route $start): array
+    private function followBreadcrumb(Route $start): \SplStack
     {
-        $list = [$start];
+        $list = new \SplStack();
+        $list->push($start);
 
-        while ($current = $this->findAllOutliers($start->to, $this->routes, 'from')) {
-            $start = array_shift($current);
+        $current = $this->findAllOutliers($start->to, $this->routes, 'from');
 
-            $list[] = $start;
+        while ($current->valid()) {
+            ;
+            $start = $current->shift();
+
+            $list->push($start);
 
             if ($start->to == $this->to) {
                 break;
             }
+
+            $current->next();
         }
 
         return $list;
