@@ -1,7 +1,6 @@
 {
     "timeWait": 7,
     "defaultError": "Desculpe|1.4|, como comentei eu sou burro :(",
-    "defaultSuggestions": "Não entendi bem|1.4|, estas são algumas opções de resposta:",
     "routeNotFound": "Desculpe|0.9|, mas não contrei uma rota entre estes locais.|0.9| Vamos tentar novamente...",
     "steps": [{
         "id": 0,

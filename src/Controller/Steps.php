@@ -2,6 +2,7 @@
 
 namespace Wead\Controller;
 
+use Wead\Controller\dto\StepConfig;
 use Wead\Model\Steps as ModelSteps;
 
 final class Steps
@@ -11,16 +12,23 @@ final class Steps
 
     public function __construct()
     {
-        $this->config = $this->retrieveSteps();
-        $this->steps = $this->config->steps;
-
-        unset($this->config->steps);
+        $this->steps = $this->retrieveSteps();
+        $this->config = $this->retrieveConfig();
     }
 
-    private function retrieveSteps(): \stdClass
+    private function retrieveSteps(): \SplObjectStorage
     {
         $data = new ModelSteps();
-        return $data->getAll();
+        $data = $data->getAll();
+        $data->rewind();
+
+        return $data;
+    }
+
+    private function retrieveConfig(): StepConfig
+    {
+        $data = new ModelSteps();
+        return $data->getConfig();
     }
 
     public function getConfig()

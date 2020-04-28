@@ -3,6 +3,7 @@
 namespace Wead\Model;
 
 use Wead\Controller\dto\Step;
+use Wead\Controller\dto\StepConfig;
 
 // emulando algo como um model de acesso ao banco de dados
 final class Steps
@@ -14,14 +15,28 @@ final class Steps
         $this->src = getcwd() . DIRECTORY_SEPARATOR . "steps.json";
     }
 
-    public function getAll(): \stdClass
+    public function getAll(): \SplObjectStorage
+    {
+        $tmp = json_decode(file_get_contents($this->src));
+        $out = new \SplObjectStorage();
+
+        foreach ($tmp->steps as $v) {
+            $out->attach(new Step($v));
+        }
+
+        return $out;
+    }
+
+    public function getConfig(): StepConfig
     {
         $tmp = json_decode(file_get_contents($this->src));
 
-        foreach ($tmp->steps as $k => $v) {
-            $tmp->steps[$k] = new Step($v);
+        $out = new StepConfig();
+
+        foreach (array_keys(get_object_vars($out)) as $k) {
+            $out->{$k} = $tmp->{$k};
         }
 
-        return $tmp;
+        return $out;
     }
 }

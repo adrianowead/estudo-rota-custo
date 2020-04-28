@@ -20,36 +20,34 @@ abstract class Flow
 
     public function getCurrentStep(): Step
     {
-        return current($this->steps);
+        return $this->steps->current();
     }
 
     public function getNextStep(): Step
     {
-        $last = clone $this;
-        $last = end($last->steps);
-
-        $step = $last === $this->getCurrentStep() ? $last : next($this->steps);
-
-        return $step;
+        $this->steps->next();
+        return $this->getCurrentStep();
     }
 
     public function getPreviusStep(): Step
     {
-        $first = clone $this;
-        $first = array_shift($first->steps);
+        $key = $this->steps->key();
+        $this->steps->rewind();
 
-        $step = $first === $this->getCurrentStep() ? $first : prev($this->steps);
+        while ($key != $this->steps->key()) {
+            $this->steps->next();
+        }
 
-        return $step;
+        return $this->getCurrentStep();
     }
 
     public function setStep(int $step = 0): Step
     {
-        reset($this->steps);
+        $this->steps->rewind();
 
-        while ($this->getCurrentStep()->id < $step) {
-            $this->getNextStep();
-        }
+        do {
+            $this->steps->next();
+        } while ($step != $this->steps->key());
 
         return $this->getCurrentStep();
     }
