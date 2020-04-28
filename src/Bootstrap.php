@@ -57,5 +57,9 @@ final class Boostrap
         $http->post('/route', function (Request $request) use ($api) {
             return $api->newRouteAction($request);
         });
+
+        $http->get('/film', function (Request $request) use ($api) {
+            return $api->getFilmAction($request);
+        });
     }
 }

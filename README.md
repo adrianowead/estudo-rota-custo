@@ -93,7 +93,7 @@ Para alterar as mensagens, basta modificar o arquivo [__steps.json__](./steps.js
 
 ### Rodar os testes
 
-É necessário ter instalada as dependências de desenvolvimento definidas no [__composer.json](./composer.json), além de ter habilidado no seu sistema o [__xdebug__](https://xdebug.org/docs/install) para gerar o relatório de cobertuda de código.
+É necessário ter instalada as dependências de desenvolvimento definidas no [__composer.json__](./composer.json), além de ter habilidado no seu sistema o [__xdebug__](https://xdebug.org/docs/install) para gerar o relatório de cobertuda de código.
 
 Uma vez que o ambiente esteja configurado, execute o comando abaixo:
 
